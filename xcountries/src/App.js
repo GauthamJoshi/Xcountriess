@@ -14,10 +14,12 @@ function App() {
           "https://countries-search-data-prod-812920491762.asia-south1.run.app/countries"
         );
         const data = await res.json();
+        console.log(data);
+        
         setCountryData(data);
         setAllCountries(data); // Store the full data for reset
       } catch (error) {
-        console.error("Error fetching data:", error); // Log error to console
+        console.error("Error fetching data:"); // Log error to console
       }
     };
     getCountriesFlag();
@@ -62,7 +64,7 @@ function App() {
       </div>
       <div className="App">
         {countryData.map((Data) => {
-          return <Countries Data={Data} key={Data.png} />;
+          return <Countries Data={Data} key={Data.cca3 || Data.png} />;
         })}
       </div>
     </div>
